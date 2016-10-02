@@ -1,6 +1,8 @@
 // John Lester & Stephanie Gan
 // CST 338-30_FA16
 // Write a Java program (GUI Cards) (M5) PHASE 1
+/* NOTE: Be sure card images from https://myetudes.org/access/content/user/jece75856/images.zip
+are in the /images subfolder. */
 
 import javax.swing.*;
 import java.awt.*;
