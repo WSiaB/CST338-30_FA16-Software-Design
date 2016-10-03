@@ -1,9 +1,12 @@
 // John Lester & Stephanie Gan
 // CST 338-30_FA16
 // Write a Java program (GUI Cards) (M5) PHASE 2
+/* NOTE: Be sure card images from https://myetudes.org/access/content/user/jece75856/images.zip
+are in the /images subfolder. */
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.border.*;
 
 public class Assignment5b
 {
@@ -36,7 +39,7 @@ public class Assignment5b
    {
       if(suitSelector >= 0 && suitSelector <= 3)
          return Card.suitRanks[suitSelector];
-      return Card.suitRanks[0];//returning default suit clubs.
+      return Card.suitRanks[0]; //returns default suit
    }
 
    static char turnIntIntoVal(int valSelector)
@@ -243,155 +246,100 @@ class GUICard
 
 }
 
-
-
-//class Card  ----------------------------------------------------------------
-class Card
-{   
-   // type and constants
-   public enum State {deleted, active} // not bool because later we may expand
-   public enum Suit { clubs, diamonds, hearts, spades }
-
-   // for sort.  
-   public static char[] valueRanks = { '2', '3', '4', '5', '6', '7', '8', '9',
-      'T', 'J', 'Q', 'K', 'A', 'X'};
-   static Suit[] suitRanks = {Suit.clubs, Suit.diamonds, Suit.hearts,
-      Suit.spades};
-   static int numValsInOrderingArray = 14;  // 'X' = Joker
-
-   // private data
+// class Card from Assignment 3
+class Card {
+   //create values for value and suit
+   public enum Suit {
+      SPADES, DIAMONDS, HEARTS, CLUBS
+   }
    private char value;
    private Suit suit;
-   State state;
-   boolean errorFlag;
+   private boolean errorFlag;
 
-   // 4 overloaded constructors
-   public Card(char value, Suit suit)
-   {
+   //default constructor
+   public Card() {
+      this('A', Suit.SPADES);
+   }
+
+   //constructor to set the card's value and suit
+   public Card(char value, Suit suit) {
       set(value, suit);
    }
 
-   public Card(char value)
-   {
-      this(value, Suit.spades);
-   }
-   public Card()
-   {
-      this('A', Suit.spades);
-   }
-   // copy constructor
-   public Card(Card card)
-   {
-      this(card.value, card.suit);
-   }
+   public boolean set(char value, Suit suit) {
+      //calling method to check validity
+      boolean validityCheck = isValid(value, suit);
 
-   // mutators
-   public boolean set(char value, Suit suit)
-   {
-      char upVal;            // for upcasing char
+      //if the values are valid, set the value and suit
+      if (validityCheck == true) {
+         this.value = Character.toUpperCase(value);
+         this.suit = suit;
 
-      // can't really have an error here
-      this.suit = suit;  
-
-      // convert to uppercase to simplify
-      upVal = Character.toUpperCase(value);
-
-      // check for validity
-      if (
-            upVal == 'A' || upVal == 'K'
-            || upVal == 'Q' || upVal == 'J'
-            || upVal == 'T' || upVal == 'X'
-            || (upVal >= '2' && upVal <= '9')
-            )
-      {
-         errorFlag = false;
-         state = State.active;
-         this.value = upVal;
+         //set error flag to false
+         this.errorFlag = false;
       }
-      else
-      {
-         errorFlag = true;
-         return false;
+      else {
+         //if the validity check comes back false, set errorflag to true
+         this.errorFlag = true;
       }
 
-      return !errorFlag;
+      return validityCheck;
    }
 
-   public void setState( State state)
-   {
-      this.state = state;
+   private boolean isValid(char value, Suit suit) {
+      //making a character array to check validity
+      char[] vals = {'1', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
+       
+      //initializing boolean
+      boolean check = false;
+
+      //checking the value against the character array vals
+      for (char c : vals) {
+         if (Character.toUpperCase(value) == c) {
+            check = true;
+         }
+      }
+
+      return check;       
    }
 
-   // accessors
-   public char getVal()
-   {
+   public String toString() {
+      //initialize string
+      String display = "";
+      //if the errorflag is true, set display as "invalid"
+      if (this.getErrorFlag() == true) {
+         display = "Invalid card.";
+      }
+      else {
+         display = this.value + " of " + this.suit;
+      }
+      return display;
+   }
+
+   //creating the accessors
+   public char getValue() {
       return value;
    }
 
-   public Suit getSuit()
-   {
+   public Suit getSuit() {
       return suit;
    }
 
-   public State getState()
-   {
-      return state;
-   }
-
-   public boolean getErrorFlag()
-   {
+   public boolean getErrorFlag() {
       return errorFlag;
    }
 
-   // stringizer
-   public String toString()
-   {
-      String retVal;
-
-      if (errorFlag)
-         return "** illegal **";
-      if (state == State.deleted)
-         return "( deleted )";
-
-      // else implied
-
-      if (value != 'X')
-      {
-         // not a joker
-         retVal =  String.valueOf(value);
-         retVal += " of ";
-         retVal += String.valueOf(suit);
+   //checking the current instance of value and suit against the values of the passed in card
+   public boolean equals(Card card) {
+      boolean checkCard = false;
+      if (this.getSuit() == card.getSuit()) {
+         if (this.getValue() == card.getValue()) {
+            checkCard = true;
+         }
       }
-      else
-      {
-         // joker
-         retVal = "joker";
-
-         if (suit == Suit.clubs)
-            retVal += " 1";
-         else if (suit == Suit.diamonds)
-            retVal += " 2";
-         else if (suit == Suit.hearts)
-            retVal += " 3";
-         else if (suit == Suit.spades)
-            retVal += " 4";
-      }
-
-      return retVal;
+      return checkCard;
    }
 
-   public boolean equals(Card card)
-   {
-      if (this.value != card.value)
-         return false;
-      if (this.suit != card.suit)
-         return false;
-      if (this.errorFlag != card.errorFlag)
-         return false;
-      if (this.state != card.state)
-         return false;
-      return true;
-   }
 
    // sort member methods
    public int compareTo(Card other)
@@ -472,303 +420,220 @@ class Card
          };
          return changed;
    }
+
+
 }
 
-
-
-//class Hand  ----------------------------------------------------------------
-class Hand
-{
-   public static final int MAX_CARDS_PER_HAND = 100;  // should cover any game
-
-   private Card[] myCards;
-   private int numCards;
-
-   //constructor
-   public Hand()
-   {
-      // careful - we are only allocating the references
-      myCards = new Card[MAX_CARDS_PER_HAND];
-      resetHand();
-   }
-
-   // mutators
-   public void resetHand() { numCards = 0; }
-
-   public boolean takeCard(Card card)
-   {
-      if (numCards >= MAX_CARDS_PER_HAND)
-         return false;
-
-      // be frugal - only allocate when needed
-      if (myCards[numCards] == null)
-         myCards[numCards] = new Card();
-
-      // don't just assign:  mutator assures active/undeleted      
-      myCards[numCards++].set( card.getVal(), card.getSuit() );
-      return true;
-   }
-
-   public Card playCard()
-   {
-      // always play  highest card in array.  client will prepare this position.
-      // in rare case that client tries to play from a spent hand, return error
-
-      Card errorReturn = new Card('E', Card.Suit.spades); // in rare cases
-
-      if (numCards == 0)
-         return errorReturn;
-      else
-         return myCards[--numCards];
-   }
-
-   // accessors
-   public String toString()
-   {
-      int k;
-      String retVal = "Hand =  ( ";
-
-      for (k = 0; k < numCards; k++)
-      {
-         retVal += myCards[k].toString();
-         if (k < numCards - 1)
-            retVal += ", ";
+// class Hand from Assignment 3
+class Hand {
+    //defining a max number of cards here to avoid a huge array by default
+    public int MAX_CARDS = 50;
+   
+    //making the array to hold the player's current hand
+    private Card[] myCards;
+    private int numCards;
+   
+    //default constructor
+    public Hand() {
+        this.myCards = new Card[MAX_CARDS];
+        numCards = 0;
+    }
+   
+    public void resetHand() {
+        //setting numCards back to zer0
+        myCards = new Card[MAX_CARDS];
+        numCards = 0;
+    }
+   
+    public boolean takeCard(Card card) {
+        boolean testing = false;
+       
+        //adds a card to the myCards array
+        if (numCards < MAX_CARDS) {
+            myCards[numCards] = new Card(card.getValue(), card.getSuit());
+            //incrementing the counter of cards in the hand
+            numCards++;
+            testing = true;
+        }
+       
+        else {
+            testing = false;
+        }
+        return testing;
+    }
+   
+    public Card playCard() {
+      //returns and removes the card in the top occupied position of the array.
+      
+        Card cardPlayed = new Card(myCards[numCards - 1].getValue(), myCards[numCards - 1].getSuit());
+       
+        //removing the card by setting it to null
+        myCards[numCards - 1] = null;
+        //decrement counter
+        numCards--;
+        
+        return cardPlayed;
+    }
+    
+    //a stringizer that the client can use prior to displaying the entire hand
+    public String toString() {
+      String displayString = "";
+      
+      if (numCards > 0) {
+          displayString += "Hand - ";
+         for (int i = 0; i < numCards; i++) {
+            displayString += myCards[i].toString() + ", ";
+         }
+          displayString += "\n\n";
       }
-      retVal += " )";
-      return retVal;
-   }
-
-   int getNumCards()
-   {
+      
+      return displayString;
+    }
+    
+    //accessor for numCards
+    public int getNumCards() {
       return numCards;
-   }
-
-   Card inspectCard(int k)
-   {
-      // return copy of card at position k.
-      // if client tries to access out-of-bounds card, return error
-
-      Card errorReturn = new Card('E', Card.Suit.spades); // in rare cases
-
-      if (k < 0 || k >= numCards)
-         return errorReturn;
-      else
+    }
+    
+    //Card inspectCard(int k) - Accessor for an individual card.  Returns a card with errorFlag = true if k is bad
+    public Card inspectCard(int k) {
+      //make a boolean errorFlag
+      boolean errorFlag;
+      
+      //if the card in position k in hand exists, return the card
+      if (myCards[k] != null) {
+         errorFlag = false;
          return myCards[k];
-   }
-
-   void sort()
-   {
-      // assumes that Card class has been sent ordering (if default not correct)
-      Card.arraySort(myCards, numCards);
-   }
+      }
+      
+      //if the card in position k is null, set errorFlag to true
+      else {
+         errorFlag = true;
+         return myCards[k];
+      }
+    }
 }
 
+// class Deck from Assignment 3
+//An object of type Deck represents a deck of playing cards
+class Deck {
+   public static int MAX_CARDS = 6*52;
+   private static Card[] masterPack; // An array of cards.
+   private static boolean masterMade = false;
+   
+   private Card[] cards; // Holds all the decks of cards
+   private int topCard; // Keeps track of the top card
+   private int numPacks; // Keeps track of the packs
 
-
-//class Deck  ----------------------------------------------------------------
-class Deck
-{
-   // six full decks (with jokers) is enough for about any game
-   private static final int MAX_CARDS_PER_DECK = 6 * 54;
-   private static Card[] masterPack;   // one 52-Card master to use for
-   // initializing decks
-   private Card[] cards;
-   private int topCard;
-   private int numPacks;
-
-   private static boolean firstTime = true;  // avoid calling allcMstrPck > once
-
-   public Deck()
-   {
+   // default constructor
+   public Deck() {
       this(1);
    }
 
-   public Deck(int numPacks)
-   {
-      allocateMasterPack();  // do not call from init()
-      cards = new Card[MAX_CARDS_PER_DECK];
+   public Deck(int numPacks) {
+      allocateMasterPack();
+      this.cards=masterPack;
       init(numPacks);
    }
 
-   static private void allocateMasterPack()
-   {
-      int j, k;
-      Card.Suit st;
-      char val;
+   public void init(int numPacks) {
+      this.numPacks=numPacks;
+      topCard = numPacks * 52;
+      
+      if((topCard)<=MAX_CARDS && numPacks>0) {
+         cards = new Card[topCard];
+         
+         for (int i=0; i < this.getTopCard(); i++){
+           cards[i] = masterPack[i%52];
+         }
+         
+         //for(int init=0; init<cards.length; init++)
+         //   cards[init] = new Card();
+         //for(int a=0; a<numPacks; a++) {
+         //   for(int b=52*a, c=0; b<52*a+52; b++, c++) {
+         //      cards[b] = masterPack[c];
+     }
 
-      // we're in static method; only need once / program: good for whole class
-      if ( !firstTime )
-         return;
-      firstTime = false;
+   }
 
-      // allocate
-      masterPack = new Card[52];
-      for (k = 0; k < 52; k++)
-         masterPack[k] = new Card();
-
-      // next set data
-      for (k = 0; k < 4; k++)
-      {
-         // set the suit for this loop pass
-         st = Card.Suit.values()[k];
-
-         // now set all the values for this suit
-         masterPack[13*k].set('A', st);
-         for (val='2', j = 1; val<='9'; val++, j++)
-            masterPack[13*k + j].set(val, st);
-         masterPack[13*k+9].set('T', st);
-         masterPack[13*k+10].set('J', st);
-         masterPack[13*k+11].set('Q', st);
-         masterPack[13*k+12].set('K', st);
+   //shuffle the deck into a random order.
+   public void shuffle() {
+      for (int i=0; i < numPacks * 52; i++) {
+         double randomDouble = Math.random() * numPacks * 52;
+         int rand = (int) randomDouble;
+         Card temp=cards[i];
+         cards[i]=cards[rand];
+         cards[rand]=temp;
       }
    }
 
-   // set deck from 1 to 6 packs, perfecly ordered
-   public void init(int numPacks)
-   {
-      int k, pack;
-
-      if (numPacks < 1 || numPacks > 6)
-         numPacks = 1;
-
-      // hand over the masterPack cards to our deck
-      for (pack = 0; pack < numPacks; pack++)
-         for (k = 0; k < 52; k++)
-            cards[pack*52 + k] = masterPack[k];
-
-      // this was slightly sloppy:  multiple packs point to same master cards
-      // if something modified a card, we would be in trouble.  fortunately,
-      // we don't expect a card to ever be modified after instantiated
-      // in the context of a deck.
-
-      this.numPacks = numPacks;
-      topCard = numPacks * 52;
+   // Removes the next card from the deck and returns it.
+   public Card dealCard() {
+      if (topCard==0) {
+         return null;
+      }
+      else {
+         Card tempCard = new Card(cards[topCard-1].getValue(), cards[topCard-1].getSuit());
+         cards[topCard-1] = null;
+         topCard--;
+         return tempCard;
+      }
    }
 
-   public void init()
-   {
-      init(1);
-   }
-
-   public int getNumCards()
-   {
+   // accessor for the int topCard
+   public int getTopCard() {
+      topCard = 52*numPacks;
       return topCard;
    }
 
-   public void shuffle()
-   {
-      Card tempCard;
-      int k, randInt;
-
-      // topCard is size of deck
-      for (k = 0; k < topCard; k++)
-      {
-         randInt = (int)(Math.random() * topCard);
-
-         // swap cards k and randInt (sometimes k == randInt:  okay)
-         tempCard = cards[k];
-         cards[k] = cards[randInt];
-         cards[randInt] = tempCard;
+   // Accessor for an individual card
+   public Card inspectCard(int location) {
+      if (topCard!=0 && location>=0 && location<topCard) {
+         return cards[location];
+      }
+      else {
+         return new Card('Z', Card.Suit.CLUBS); // generates error from cards
       }
    }
 
-   public Card takeACard()
-   {
-      return new Card();
-   }
+   // private method that will be called by the constructor
+   private static void allocateMasterPack() {
+      if (masterMade) {
+         return;
+      }
+      else {
+         masterPack=new Card[52];
+         Card.Suit suit;
 
-   public Card dealCard()
-   {
-      // always deal the topCard.  
-      Card errorReturn = new Card('E', Card.Suit.spades); //  in rare cases
-
-      if (topCard == 0)
-         return errorReturn;
-      else
-         return cards[--topCard];
-   }
-
-   public boolean removeCard(Card card)
-   {
-      int k;
-      boolean foundAtLeastOne;
-
-      foundAtLeastOne = false;
-      for (k = 0; k < topCard; k++)
-      {
-         // care: use while, not if, in case we copy to-be-removed from top to k
-         while ( cards[k].equals(card) )
-         {
-            // overwrite card[k] with top of deck, then decrement topCard
-            cards[k] = cards[topCard - 1];
-            topCard--;
-            foundAtLeastOne = true;
-            // test because "while" causes topCard to decrease, possibly below k
-            if ( k >= topCard )
-               break;
+         for (int c=0; c<masterPack.length; c++) {
+            masterPack[c] = new Card();
          }
+
+         for (int s=0; s<4; s++) {
+            if (s==0) {
+               suit = Card.Suit.CLUBS;
+            }
+            else if (s==1) {
+               suit = Card.Suit.DIAMONDS;
+            }
+            else if (s==2) {
+               suit = Card.Suit.HEARTS;
+            }
+            else {
+               suit = Card.Suit.SPADES;
+            }
+
+            masterPack[13*s].set('A', suit);
+            int cardCount; //create card count
+            char cardSuit; //create card suit
+            for (cardSuit='2', cardCount=1; cardSuit<='9'; cardSuit++, cardCount++)
+               masterPack[13*s+cardCount].set(cardSuit, suit);
+            masterPack[13*s+9].set('T', suit);
+            masterPack[13*s+10].set('J', suit);
+            masterPack[13*s+11].set('Q', suit);
+            masterPack[13*s+12].set('K', suit);
+         }
+         masterMade = true;
       }
-      // did above work if k == topCard-1?  think about it
-      return foundAtLeastOne;
-   }
-
-   public boolean addCard(Card card)
-   {
-      // don't allow too many copies of this card in the deck
-      if (numOccurrences(card) >= numPacks)
-         return false;
-
-      cards[topCard++] = card;
-      return true;
-   }
-
-   public Card inspectCard(int k)
-   {
-      // return copy of card at position k.
-      // if client tries to access out-of-bounds card, return error
-
-      Card errorReturn = new Card('E', Card.Suit.spades); //  in rare cases
-
-      if (k < 0 || k >= topCard)
-         return errorReturn;
-      else
-         return cards[k];
-   }
-
-   public int numOccurrences(Card card)
-   {
-      int retVal, k;
-
-      retVal = 0;
-
-      // assumption:  card is a default item:  not deleted and state=active)
-      for (k = 0; k < topCard; k++)
-      {
-         if (inspectCard(k).equals(card))
-            retVal++;
-      }
-      return retVal;
-   }
-
-   public String toString()
-   {
-      int k;
-      String retString = "\n";
-
-      for (k = 0; k < topCard; k++)
-      {
-         retString += cards[k].toString();
-         if (k < topCard - 1)
-            retString += " / ";
-      }
-      retString += "\n";
-
-      return retString;
-   }
-
-   void sort()
-   {
-      // assumes that Card class has been sent ordering (if default not correct)
-      Card.arraySort(cards, topCard);
    }
 }
