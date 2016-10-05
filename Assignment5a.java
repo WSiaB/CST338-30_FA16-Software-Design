@@ -26,7 +26,7 @@ public class Assignment5a
       {
          for(int number = 0; number <= 13; number++)
          {
-            icon[count++] = new ImageIcon("images/" + turnIntIntoCardValue(number) 
+            icon[count++] = new ImageIcon("src/images/" + turnIntIntoCardValue(number) 
                   + turnIntIntoCardSuit(suit) + ".gif");
          }        
       }
@@ -39,6 +39,7 @@ public class Assignment5a
       String returnNumber = null;
       String[] value = {"A", "2", "3", "4", "5", "6", "7", "8", "9", 
             "T", "J", "Q", "K", "X"};
+      
       if(number >=0 && number <= 13)
       {
          returnNumber = value[number];
