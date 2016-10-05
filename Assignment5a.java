@@ -6,8 +6,8 @@ are in the /images subfolder. */
 
 import javax.swing.*;
 import java.awt.*;
-
-public class Assignment5a 
+   
+public class Assignment5a
 {
    // static for the 57 icons and their corresponding labels
    // normally we would not have a separate label for each card, but
@@ -21,45 +21,48 @@ public class Assignment5a
       // build the file names ("AC.gif", "2C.gif", "3C.gif", "TC.gif", etc.)
       // in a SHORT loop.  For each file name, read it in and use it to
       // instantiate each of the 57 Icons in the icon[] array.
-      int count = 0;     
-      for(int suit = 0; suit < 4; suit++)
+      int count=0;     
+      for(int suit=0; suit<4; suit++)
       {
-         for(int number = 0; number <= 13; number++)
+         for(int number=0; number<=13; number++)
          {
-            icon[count++] = new ImageIcon("src/images/" + turnIntIntoCardValue(number) 
+            icon[count++] = new ImageIcon("images/" + turnIntIntoCardValue(number)
                   + turnIntIntoCardSuit(suit) + ".gif");
          }        
       }
    }
    
    // turns 0 - 13 into "A", "2", "3", ... "Q", "K", "X"
-   static String turnIntIntoCardValue(int number)
+   static String turnIntIntoCardValue(int k)
    {
       // an idea for a helper method (do it differently if you wish)
-      String returnNumber = null;
+      String returnValue = null;
       String[] value = {"A", "2", "3", "4", "5", "6", "7", "8", "9", 
             "T", "J", "Q", "K", "X"};
-      
-      if(number >=0 && number <= 13)
+      if(k>=0 && k<=13)
       {
-         returnNumber = value[number];
-      } else {
-         returnNumber = value[0]; //returns default "A" for Ace
+         returnValue = value[k];
+      } 
+      else
+      {
+         return value[0];
       }
-      return returnNumber;
+      return returnValue;
    }
    
    // turns 0 - 3 into "C", "D", "H", "S"
-   static String turnIntIntoCardSuit(int suit)
+   static String turnIntIntoCardSuit(int j)
    {
       // an idea for another helper method (do it differently if you wish)
       String returnSuit = null;
       String[] value = {"C", "D", "H", "S"};
-      if(suit >=0 && suit <= 3)
+      if(j>=0 && j<=3)
       {
-         returnSuit = value[suit];
-      } else {
-         returnSuit = value[0]; //returns default value "A".
+         returnSuit = value[j];
+      }
+      else
+      {
+         return value[0];
       }
       return returnSuit;
    }
