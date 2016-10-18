@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CSUMB CSIT Checklist</string>
+    <string name="item1">CST 300: Major ProSeminar</string>
+    <string name="item2">CST 205: Multimedia Design &amp; Programming</string>
+    <string name="item3">CST 363: Introduction to Database Systems</string>
+    <string name="item4">CST 336: Internet Programming</string>
+    <string name="item5">CST 311: Intro to Computer Networks</string>
+    <string name="item6">CST 361S: Technology Tutors</string>
+    <string name="item7">CST 338: Software Design</string>
+    <string name="item8">CST 438: Software Engineering</string>
+    <string name="item9">CST 370: Design &amp; Analysis of Algorithms</string>
+    <string name="item10">CST 373: Ethics in Comm &amp; Tech</string>
+    <string name="item11">CST 499: Directed Group Capstone</string>
+    <string name="item12">Elective (if needed)</string>
+</resources>

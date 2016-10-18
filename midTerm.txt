@@ -1,0 +1,285 @@
+Home / ? Fall 2016 / ? CST338-30_FA16: Software Design / ? September 21 - September 27 / ? MIDTERM Sept 27th or 28th (2 hrs)
+Started on	Wednesday, 28 September 2016, 7:08 PM
+State	Finished
+Completed on	Wednesday, 28 September 2016, 7:36 PM
+Time taken	27 mins 11 secs
+Question 1
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+If a hyphen is added after the % in a format specifier, the output will be:
+Select one:
+a. Left justified.
+b. Right justified.
+c. None of these.
+d. Centered.
+Question 2
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+The statement: System.out.printf("%6.2f", 597.7231); displays:
+Select one:
+a. None of these.
+b. 597.72.
+c. 597.723.
+d. 000597.72.
+Question 3
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+Standard code libraries in Java are called:
+Select one:
+a. Statements.
+b. Classes.
+c. Packages.
+d. Methods.
+Question 4
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+A compound statement is enclosed between:
+Select one:
+a. [ ].
+b. < >.
+c. ( ).
+d. { }.
+Question 5
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+To terminate a program, use the Java statement:
+Select one:
+a. System.abort(0);
+b. System.quit(0);
+c. System.exit(0);
+d. System.end(0);
+Question 6
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+The looping mechanism that always executes at least once is the ________ statement.
+Select one:
+a. do...while
+b. for
+c. if...else
+d. while
+Question 7
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+Accessor methods:
+Select one:
+a. promotes abstraction.
+b. return something equivalent to the value of an instance variable.
+c. None of these.
+d. Both return something equivalent to the value of an instance variable and promotes abstraction.
+Question 8
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+In Java, a block is delimited by:
+Select one:
+a. / /.
+b. ( ).
+c. " ".
+d. { }.
+Question 9
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+A set method is:
+Select one:
+a. None of these.
+b. a recursive method.
+c. an accessor method.
+d. a mutator method.
+Question 10
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+The conversion from an object of a wrapper class to a value of its associated primitive type is called:
+Select one:
+a. converting.
+b. unboxing.
+c. boxing.
+d. reinstantiating.
+Question 11
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+Converting from a value of primitive type to a corresponding object of its associated wrapper class is called:
+Select one:
+a. boxing.
+b. unboxing.
+c. converting.
+d. reinstantiating.
+Question 12
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+null can be used:
+Select one:
+a. to indicate a variable has no real value.
+b. as a placeholder.
+c. in a Boolean expression with ==.
+d. All of these
+Question 13
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+A value of an enumerated type is similar to a/an:
+Select one:
+a. Instance variable.
+b. Object of a class.
+c. Named constant.
+d. None of these.
+Question 14
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+Consider the following array:
+
+
+
+What is the value of myArray[myArray[1] - myArray[0]]?
+Select one:
+a. 7
+b. 9
+c. -3
+d. 6
+Question 15
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+Which of the following initializer lists correctly initializes the indexed variables of an array named myDoubles?
+Select one:
+a. double[] myDoubles = {0.0, 1.0, 1.5, 2.0, 2.5};
+b. array myDoubles[double] = {0.0, 1.0, 1.5, 2.0, 2.5};
+c. double myDoubles[double] = {0.0, 1.0, 1.5, 2.0, 2.5};
+d. double myDoubles[5] = new double(0.0, 1.0, 1.5, 2.0, 2.5);
+Question 16
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+If the final modifier is added to the definition of a method, this means:
+Select one:
+a. the method may be redefined in the derived class.
+b. the method may be redefined in the sub class.
+c. the method may not be redefined in the derived class.
+d. None of these.
+Question 17
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+A base class is synonymous with a:
+Select one:
+a. Sub class.
+b. Derived class.
+c. Parent class.
+d. Child class.
+Question 18
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+In using the keyword this in place of super(), the invocation of this must be the ________ action taken by the constructor.
+Select one:
+a. first
+b. it does not matter
+c. None of these.
+d. last
+Question 19
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+The equals method for a class should have ________ as the type of its one parameter.
+Select one:
+a. String
+b. Object
+c. Integer
+d. Double
+Question 20
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+An abstract class must have the modifier ________ included in the class heading.
+Select one:
+a. final
+b. static
+c. abstract
+d. private
+Question 21
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+Assigning an object of an ancestor class to a descendent class is called:
+Select one:
+a. static binding.
+b. downcasting.
+c. dynamic binding.
+d. upcasting.
+Question 22
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+________ refers to the ability to associate many meanings to one method name by means of the late binding mechanism.
+Select one:
+a. None of these.
+b. Encapsulation
+c. Inheritance
+d. Polymorphism
+Question 23
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+Inner classes available outside the scope of their outer class are modified by the keyword:
+Select one:
+a. Package access.
+b. Protected.
+c. Public.
+d. Private.
+Question 24
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+A Java interface is an example of:
+Select one:
+a. All of these.
+b. polymorphism.
+c. encapsulation.
+d. abstraction.
+Question 25
+Complete
+Marked out of 1.00
+ Not flaggedFlag question
+Question text
+Any constant variables defined in an interface must be defined as:
+Select one:
+a. public.
+b. protected.
+c. private.
+d. package access.
+Finish review

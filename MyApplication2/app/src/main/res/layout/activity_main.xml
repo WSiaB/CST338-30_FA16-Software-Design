@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffffff"
+    tools:context="com.kirkersoft.myapplication2.MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/otter"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:fadingEdge="vertical">
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item1"
+                android:text="@string/item1"
+                android:textColor="#006699"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item2"
+                android:text="@string/item2"
+                android:textColor="#006699"
+                android:layout_below="@id/item1"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item3"
+                android:text="@string/item3"
+                android:textColor="#006699"
+                android:layout_below="@id/item2"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item4"
+                android:text="@string/item4"
+                android:textColor="#006699"
+                android:layout_below="@id/item3"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item5"
+                android:text="@string/item5"
+                android:textColor="#006699"
+                android:layout_below="@id/item4"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item6"
+                android:text="@string/item6"
+                android:textColor="#006699"
+                android:layout_below="@id/item5"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item7"
+                android:text="@string/item7"
+                android:textColor="#006699"
+                android:layout_below="@id/item6"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item8"
+                android:text="@string/item8"
+                android:textColor="#006699"
+                android:layout_below="@id/item7"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item9"
+                android:text="@string/item9"
+                android:textColor="#006699"
+                android:layout_below="@id/item8"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item10"
+                android:text="@string/item10"
+                android:textColor="#006699"
+                android:layout_below="@id/item9"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item11"
+                android:text="@string/item11"
+                android:textColor="#006699"
+                android:layout_below="@id/item10"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item12"
+                android:text="@string/item12"
+                android:textColor="#006699"
+                android:layout_below="@id/item11"
+                android:layout_alignParentLeft="true"
+                android:onClick="onCheckboxClicked" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/submit"
+                android:text="Submit"
+                android:layout_below="@id/item12"
+                android:layout_centerHorizontal="true"
+                android:onClick="onButtonClick" />
+        </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>
