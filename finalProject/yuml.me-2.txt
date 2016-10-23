@@ -1,0 +1,30 @@
+[UML Activity Diagram]
+(start)->(Log In)
+(Log In)->|a|
+|a|->(Main Menu)
+|a|->(Failed to Log In)
+(Failed to Log In)-x3 locked out>|a|
+(Main Menu)->|b|->(Clock in or out)
+|b|->(Report)
+|b|->(Emergency)
+|b|->(Log out)
+(Log out)->(end)
+(Clock in or out)->(Update time clock)
+(Update time clock)->(Main Menu)
+(Report)->(Check point)
+(Report)->(Create report)
+(Check point)->|c|
+|c|->(NFC)
+|c|->(QR code)
+|c|->(Create report)
+(NFC)->(Create report)
+(QR code)->(Create report)
+(Create report)->(Main Menu)
+(Emergency)->(Call 911)
+(Emergency)->(Text supervisor)
+(Emergency)->|d|
+|d|->(Record audio)
+|d|->(Record video)
+|d|->(Take note)
+|d|->(End emergency)
+(End emergency)->(Main Menu)

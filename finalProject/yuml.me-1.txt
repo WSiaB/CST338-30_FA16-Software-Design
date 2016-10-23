@@ -1,0 +1,15 @@
+[note: UML Class Diagram{bg:cornsilk}]
+[Users|userNum:int k;userName:string u;passWord:string;active:boolean|logIn(userName passWord);lockOut(userName);be_newUser(userName passWord);be_listUsers();be_deleteUser(userNum)]
+
+[timeClockEntries|userNum;timeIn:date;timeOut:date;missedPunch:boolean|clockIn();clockOut();be_showUser(userNum startDate endDate);be_showAllPunches(startDate endDate)]
+
+[Locations|locationCode:longInt k;gpsCoords:string;gpsFence:string|getLocation();gpsInPen(gpsCoords);be_listLocations()]
+
+[Reports|userNum:int;locationCode:longInt;gpsCoords:string;dateTime:date;reportText:longText|getLocation();createReport(userNum locationCode gpsCoords dateTime reportText);createReport(userNum gpsCoords dateTime reportText);be_todaysReports(dateTime);be_usersReports(userNum dateTime)]
+
+[Emergency|userNum:int;gpsCoords:string;dateTime:date;inProgress:boolean;notes:longText|startEmergency();textSupervisor(userNum gpsCoords dateTime);updateNotes();endEmergency();be_listEmergencies(startDate endDate)]
+
+[Users]1->n[timeClockEntries]
+[Users]1->n[Reports]
+[Users]1->1[Emergency]
+[Reports]n->1[Locations]

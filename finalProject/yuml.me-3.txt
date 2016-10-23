@@ -1,0 +1,8 @@
+(note: UML Class Diagram{bg:cornsilk})
+[Guard]-(Log In)
+(Log In)-(Main Menu)
+(Main Menu)>(Clock In Out)
+(Main Menu)>(Report)
+(CheckPoint)<(Report)
+(Main Menu)>(Emergency)
+(Emergency)-[Supervisor]
